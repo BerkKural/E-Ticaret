@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <form action="" method="POST" class="w-50 m-auto text-center border p-4">
+        {% csrf_token%}
+            <label for="">Kullanıcı Adı</label>
+            <input type="text" name="kullanici" id="" class="form_control">
+            <label for="">Şifre</label>
+            <input type="password" name="sifre" id="" class="form_control">
+            <input type="submit" value="Giriş Yap" class="btn btn-primary mt-2">
+        </form>
+    </div>
+{% endblock content %}
+

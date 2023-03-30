@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{%load static%}
+
+{% block content %}
+
+<style>
+
+    .helptext ul{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .errorlist {
+        padding: 0;
+        list-style-type: none;
+        color: red;
+    }
+
+</style>
+
+
+    <div class="container mt-5">
+        <form action="" method="POST" class="w-50 m-auto border p-4">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Kayıt Ol" class="btn btn-primary mt-2">
+        </form>
+    </div>
+{% endblock content %}

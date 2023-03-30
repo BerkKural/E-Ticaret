@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body data-bs-theme="dark">
+
+{% include "includes/_navbar.html" %}
+
+
+{% if messages %}
+    {% for mesaj in messages %}
+      <div class="alert alert-{{mesaj.tags}} text-center">
+        {{mesaj}}
+      </div>    
+    {% endfor %}
+
+{% else %}
+{% endif %}
+
+
+    <!-- extends: belirttiğimiz sayfada block etiketi içerisinde belirlediğimiz kısmı değiştirmemizi sağlar
+         include: belirttiğimiz dosyayı olduğu gibi sayfaya ekler -->
+
+  {% block content %}
+
+      <!-- Container-->
+    <div class="container mt-5">
+      <div class="row">
+        {% if product|length > 0 %}
+        {% for urun in product  %}
+          <div class="col-4 ">
+              <div class="card"">
+                <img src="{{urun.resim.url}}" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">{{urun.isim}}</h5>
+                    <p>Satıcı: {{urun.satici.username}}</p>
+                  </div>
+                  
+                  <p>Kategori: {{urun.kategori.isim}}</p>
+                  <!-- Manytomany yazdırılması -->
+                  {% for alt in urun.altkategori.all %}
+                    <small>{{alt.isim}}</small>
+                  {% endfor %}
+                  <p class="card-text">{{urun.aciklama}}</p>
+                  <p>Fiyat: {{urun.fiyat}} TL </p>
+                  <a href="{% url 'urun' urun.id %}" class="btn btn-primary">Ürünü İncele</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <h1>Eşleşen ürün bulunmamaktadır</h1>
+        {% endif %}
+      </div>
+    </div>
+    
+  {% endblock content %}
+    
+  
+      </div>
+    </div>
+
+{% include "includes/_footer.html" %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
