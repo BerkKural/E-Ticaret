@@ -29,5 +29,6 @@ urlpatterns = [
     path('kayit/', kayit, name='register'),
     path('giris/', giris, name='login'),
     path('cikis/', cikis, name='logout'),
-    path('olustur/', olustur, name='olustur')
+    path('olustur/', olustur, name='olustur'),
+    path('sepet/', sepet, name='sepet')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

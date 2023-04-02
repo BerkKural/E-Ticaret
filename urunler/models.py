@@ -34,3 +34,15 @@ class Urun(models.Model):
 
     def __str__(self):
         return self.isim
+    
+
+class Sepet(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    urun = models.ForeignKey(Urun, on_delete=models.CASCADE, null=True)
+    adet = models.IntegerField()
+    toplamFiyat = models.IntegerField()
+    odendiMi = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username

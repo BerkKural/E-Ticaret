@@ -21,6 +21,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/olustur/">Oluştur</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/sepet/">Sepetim ({{request.user.sepet_set.all.count}})</a>
+                  </li>
                 {% else %}
                 <li class="nav-item">
                   <a class="nav-link" href="/kayit/">Kayıt Ol</a>
