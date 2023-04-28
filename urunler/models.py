@@ -47,11 +47,3 @@ class Sepet(models.Model):
     def __str__(self):
         return self.user.username
     
-class Odeme(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    sepet = models.ManyToManyField(Sepet)
-    toplam = models.IntegerField()
-    odendiMi = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.buyer.username
