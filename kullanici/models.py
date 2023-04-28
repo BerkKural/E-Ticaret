@@ -10,3 +10,4 @@ class Hesap(models.Model):
         return self.user.username
     
 
+    
